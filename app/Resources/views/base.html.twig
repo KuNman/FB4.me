@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+    {% block javascript %}
+        <!-- Scripts -->
+        <script src="{{ asset('css/templated-spatial/assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('css/templated-spatial/assets/js/skel.min.js') }}"></script>
+        <script src="{{ asset('css/templated-spatial/assets/js/util.js') }}"></script>
+        <script src="{{ asset('css/templated-spatial/assets/js/main.js') }}"></script>
+    {% endblock %}
+        <link rel="stylesheet" href="{{ asset('css/templated-spatial/assets/css/main.css') }}" type="text/css"/>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title> My Webpage</title>
+    {% endblock %}
+</head>
+<body>
+    <div id="content">{% block content %}{% endblock %}</div>
+
+    {% block footer %}
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        Wrote by KuNman@2017
+        <a href="Contact">Contact</a>
+    </div>
+</footer>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,145 @@
+{% extends "default/homepage.html.twig" %}
+
+{% block content %}
+<body class="landing">
+
+<!-- Header -->
+<header id="header" class="alt">
+    <nav id="nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="\login">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+<!-- Banner -->
+<section id="banner" style="padding-bottom: 1px">
+    <h2>Results for query : </h2>
+    <h4 style="color: white">
+        {% if result.brand is defined %}
+        <p> Favorite brand : {{ result.brand }} </p>
+            {% endif %}
+            {% if result.material is defined %}
+                <p> Frame material : {{ result.material }}
+            {% endif %}
+            {% if result.material2 is defined %}
+                   or {{ result.material2 }} </p>
+            {% endif %}
+            {% if result.fork is defined %}
+               <p> Fork : {{ result.fork }}
+            {% endif %}
+            {% if result.fork2 is defined %}
+                or {{ result.fork2 }}
+            {% endif %}
+            {% if result.fork3 is defined %}
+                or {{ result.fork3 }}
+            {% endif %}
+            {% if result.fork4 is defined %}
+               or {{ result.fork4 }}
+            {% endif %}
+            {% if result.fork5 is defined %}
+                   or {{ result.fork5 }} </p>
+            {% endif %}
+            {% if result.damper is defined %}
+               <p> Damper : {{ result.damper }}
+            {% endif %}
+            {% if result.damper2 is defined %}
+                or {{ result.damper2 }}
+            {% endif %}
+            {% if result.damper3 is defined %}
+                or {{ result.damper3 }}
+            {% endif %}
+            {% if result.damper4 is defined %}
+                or {{ result.damper4 }}
+            {% endif %}
+            {% if result.damper5 is defined %}
+                   or {{ result.damper5 }} </p>
+            {% endif %}
+            {% if result.wheels is defined %}
+                <p> Rims material : {{ result.wheels }}
+            {% endif %}
+            {% if result.wheels2 is defined %}
+                    or {{ result.wheels2 }} </p>
+            {% endif %}
+            {% if result.size is defined %}
+                <p> Size : {{ result.size }}
+            {% endif %}
+            {% if result.size2 is defined %}
+                or {{ result.size2 }} </p>
+            {% endif %}
+            {% if result.gears is defined %}
+                <p> Gears : {{ result.gears }}
+            {% endif %}
+            {% if result.gears2 is defined %}
+                or {{ result.gears2 }}
+            {% endif %}
+            {% if result.gears3 is defined %}
+                    or {{ result.gears3 }} </p>
+            {% endif %}
+            {% if result.geometry is defined %}
+                <p> Geometry : {{ result.geometry }}
+            {% endif %}
+            {% if result.geometry2 is defined %}
+                or {{ result.geometry2 }}
+            {% endif %}
+            {% if result.geometry3 is defined %}
+                   or {{ result.geometry3 }} </p>
+            {% endif %}
+        </h4>
+</section>
+{% block details %}
+                {% set amount = bike | length %}
+                <section id="two" class="wrapper style2 special">
+                    <div class="container">
+                        <div class="row 150%">
+                        {% if amount > 1 %}
+                            {% for row in bike %}
+                                {% set damper = row.travelDamper | length %}
+                                <div class="6u">
+                                    <div class="result" style="
+                                    font-size: 17px;
+                                    background-color:rgba(230, 235, 230, 0.8);
+                                    margin-bottom: 4%;">
+                                        <li> Brand : <b>{{ row.brand.brand }}</b> </li>
+                                        <li> Model : <b>{{ row.model }} </b> {{ row.year }}</li>
+                                        <li> Geometry : {{ row.geometry }}</li>
+                                        <li> Frame material : {{ row.material }}</li>
+                                <li> Fork : {{ row.fork }} ( {{ row.travelFork }} mm || {{ row.travelFork * 0.039}} inches ) </li>
+                                        {% if damper < 1 %}
+                                            <li> No damper </li>
+                                        {% endif %}
+                                        {% if damper > 1 %}
+                                            <li> Damper : {{ row.damper }} ( {{ row.travelDamper }} mm || {{ row.travelDamper * 0.039}} inches )</li>
+                                        {% endif %}
+                                <li> Size : {{ row.size }} inches and {{  row.wheels |lower}} rims</li>
+                                <li> Derailleur : {{ row.derailleur }} </li>
+                                <li> Gears : {{ row.gears }} </li>
+                                <li> Weight: {{ row.weight }} kg || {{ row.weight * 2.2}} lbs</li>
+                                        <li> <b>More info : <a href="http://google.com/search?&q={{ row.brand.brand }} {{ row.model }} {{ row.year }}"></b>Google</a> </li>
+                                </div>
+                                </div>
+                            {% endfor %}
+                            </div>
+                    </div>
+                </section>
+                        {% elseif amount > 14 %}
+                            <div class="container">
+                                <header class="major">
+                                <h3 style="color: white">
+                                   I found too much bikes ({{ amount }}). Please specify query.
+                                </h3>
+                            </header>
+                            </div>
+                        {% elseif amount < 1 %}
+                            <div class="container">
+                                <header class="major">
+                                <h3 style="color: white">
+                                    I found 0 bikes. Please change query.
+                                </h3>
+                            </header>
+                            </div>
+                        {% endif %}
+        {% endblock %}
+{% endblock %}

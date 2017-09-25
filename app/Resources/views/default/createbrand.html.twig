@@ -1,0 +1,14 @@
+<h1>Create brand</h1>
+{#{% block body %}#}
+    {#<form method="POST" action="{{ path('app_default_createbrand') }}">#}
+        {#<div><label>Brand: <input name="brand" type="text"></label></div>#}
+        {#<div><input type="submit"></div>#}
+    {#</form>#}
+{#{% endblock %}#}
+
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit">
+    {{ form_end(form) }}
+{% endblock %}
