@@ -2,11 +2,12 @@
 <html>
 <head>
     {% block head %}
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
     {% block javascript %}
         <!-- Scripts -->
-        <script src="{{ asset('css/templated-spatial/assets/js/jquery.min.js') }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="{{ asset('css/templated-spatial/assets/js/skel.min.js') }}"></script>
-        <script src="{{ asset('css/templated-spatial/assets/js/util.js') }}"></script>
+        {#<script src="{{ asset('css/templated-spatial/assets/js/util.js') }}"></script>#}
         <script src="{{ asset('css/templated-spatial/assets/js/main.js') }}"></script>
     {% endblock %}
         <link rel="stylesheet" href="{{ asset('css/templated-spatial/assets/css/main.css') }}" type="text/css"/>
