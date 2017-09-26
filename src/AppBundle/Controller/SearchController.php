@@ -67,9 +67,7 @@ class SearchController extends Controller
                     },
                     'choice_label' => 'brand',
                     'choice_value' => 'brand',
-                    'attr' => array(
-                        'class' => 'js-example-basic-single'
-                    )
+
                 ))
                 ->add('Next', SubmitType::class, array(
                     'attr' => array('class' => 'button special'),

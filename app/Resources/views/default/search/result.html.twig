@@ -96,7 +96,7 @@
                 <section id="two" class="wrapper style2 special">
                     <div class="container">
                         <div class="row 150%">
-                    {% if (amount > 0) and (amount < 14) %}
+                    {% if (amount > 0) and (amount <= 14) %}
                             {% for row in bike %}
                             <div class="6u">
                                     <div class="result" style="
@@ -132,7 +132,7 @@
                                     margin-bottom: 4%;">
                                     YOUR QUERY DIDN'T MATCH WITCH ANY BIKE. PLEASE TRY AGAIN.
                             </div>
-                    {% elseif amount > 15 %}
+                    {% elseif amount > 14 %}
                         <div style="
                                     font-size: 17px;
                                     color: white;
