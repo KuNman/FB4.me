@@ -450,7 +450,7 @@
 	}
 
 	.\-6u {
-		margin-left: 50%;
+		margin-left: 1%;
 	}
 
 	.\-5u {
@@ -723,7 +723,7 @@
 		}
 
 		.row.\31 50\25 > * {
-			padding: 0 0 0 2.25em;
+			padding: 0 0 0 1.2em;
 		}
 
 		.row.\31 50\25 {
@@ -1153,7 +1153,7 @@
 		}
 
 		.row.\31 50\25 > * {
-			padding: 0 0 0 1.875em;
+			padding: 0 0 0 0.8em;
 		}
 
 		.row.\31 50\25 {
@@ -1368,7 +1368,7 @@
 		}
 
 		.row.\31 50\25 > * {
-			padding: 0 0 0 1.875em;
+			padding: 0 0 0 0.75em;
 		}
 
 		.row.\31 50\25 {
@@ -1523,7 +1523,7 @@
 		}
 
 		.\-6u\28xsmall\29 {
-			margin-left: 50%;
+			margin-left: 1%;
 		}
 
 		.\-5u\28xsmall\29 {
@@ -1690,11 +1690,11 @@
 
 	h3 {
 		font-size: 1.35em;
-		line-height: 1.5em;
+		line-height: 1.25em;
 	}
 
 	h4 {
-		font-size: 1.1em;
+		font-size: 1em;
 		line-height: 1.5em;
 	}
 
@@ -2395,7 +2395,7 @@
 		}
 
 	ul {
-		list-style: disc;
+		list-style-type: none;
 		margin: 0 0 2em 0;
 		padding-left: 1em;
 	}
@@ -2732,17 +2732,16 @@
 			margin: 0 auto;
 			width: 60em;
 		}
+		.wrapper.style5 {
+			background-color: #f6f6f6;
+		}
 
 		.wrapper.style2 {
-			padding: 5em 0 4em 0;
-			background-attachment: fixed;
-			background-image: url("images/overlay.png"), url("../../images/banner.jpg");
-			background-position: center top;
-			background-size: cover;
+			background-color: #f6f6f6;
 			line-height: 1.75;
 			text-align: center;
 		}
-		}
+
 
 		.wrapper.style3 {
 			background-attachment: fixed;
@@ -2750,6 +2749,8 @@
 			background-position: center center;
 			background-size: cover;
 		}
+
+
 
 			.wrapper.style3 header.major {
 				margin-bottom: 3em;

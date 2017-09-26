@@ -11,7 +11,7 @@
         </ul>
     </nav>
 </header>
-
+{% set amount = bike | length %}
 <!-- Banner -->
 <section id="banner" style="padding-bottom: 1px">
     <h2>Results for query : </h2>
@@ -88,60 +88,56 @@
             {% if result.year is defined %}
                 <p> Yearbook : {{ result.year }} </p>
             {% endif %}
+        {% if amount > 0 %}
         <p><a href="/search/result/{{ rand }}">Direct link to results</a></p>
+        {% endif %}
     </h4>
 </section>
 {% block details %}
-                {% set amount = bike | length %}
-                <section id="two" class="wrapper style2 special">
-                    <div class="container">
-                        <div class="row 150%">
-                    {% if (amount > 0) and (amount <= 14) %}
-                            {% for row in bike %}
-                            <div class="6u">
-                                    <div class="result" style="
-                                    font-size: 17px;
-                                    background-color:rgba(230, 235, 230, 10);
-                                    margin-bottom: 4%;">
-                                        <li> Brand : <b>{{ row.brand.brand }}</b> </li>
-                                        <li> Model : <b>{{ row.model }} </b> {{ row.year }}</li>
-                                        <li> Geometry : {{ row.geometry }}</li>
-                                        <li> Frame material : {{ row.material }}</li>
-                                        <li> Fork : {{ row.fork }} ( {{ row.travelFork }} mm || {{ row.travelFork * 0.039}} inches ) </li>
-                                        {% set damper = row.travelDamper | length %}
-                                        {% if damper < 1 %}
-                                            <li> No damper </li>
-                                        {% endif %}
-                                        {% if damper > 1 %}
-                                            <li> Damper : {{ row.damper }} ( {{ row.travelDamper }} mm || {{ row.travelDamper * 0.039}} inches )</li>
-                                        {% endif %}
-                                        <li> Size : {{ row.size }} inches and {{  row.wheels |lower}} rims</li>
-                                        <li> Derailleur : {{ row.derailleur }} </li>
-                                        <li> Gears : {{ row.gears }} </li>
-                                        <li> Weight: {{ row.weight }} kg || {{ row.weight * 2.2}} lbs</li>
-                                        <li> <b>More info : <a href="http://google.com/search?&q={{ row.brand.brand }} {{ row.model }} {{ row.year }}"></b>Google</a> </li>
-                                    </div>
-                            </div>
-                            {% endfor %}
+    <section id="two" class="wrapper style2 special">
+        <div class="container">
+            <div class="row 150%">
+                {% if (amount > 0) and (amount <= 14) %}
+                {% for row in bike %}
+                <div class="6u 12u$(xsmall)">
+                    <div class="image fit captioned">
+                        <ul style="list-style: none;">
+                        <h3><li>{{ row.brand.brand }} </li>
+                        <li><b>{{ row.model }} </b> {{ row.year }}</li></h3>
+                            <li> Geometry : <b>{{ row.geometry }}</b></li>
+                            <li> Frame : <b>{{ row.material }}</b></li>
+                            <li> Fork : <b>{{ row.fork }} {{ row.travelFork }} mm || {{ row.travelFork * 0.039}} in </b></li>
+                        {% set damper = row.travelDamper | length %}
+                        {% if damper < 1 %}
+                        <li> No damper </li>
+                        {% endif %}
+                        {% if damper > 1 %}
+                        <li> Damper : <b>{{ row.damper }} {{ row.travelDamper }} mm || {{ row.travelDamper * 0.039}} in </b></li>
+                        {% endif %}
+                        <li> Size : <b>{{ row.size }} </b>in and {{ row.wheels |lower}} rims</li>
+                        <li> Derailleur :<b> {{ row.derailleur }}</b> </li>
+                        <li> Gears : <b>{{ row.gears }} </b></li>
+                        <li> Weight:<b> {{ row.weight }} kg || {{ row.weight * 2.2}} lbs</b></li>
+                        <li> <b>More info : <a href="http://google.com/search?&q={{ row.brand.brand }} {{ row.model }} {{ row.year }}"></b>Google</a> </li>
+                        </h5></ul></div>
+                    </div>
+                {% endfor %}
                     {% elseif amount == 0 %}
-                            <div style="
-                                    font-size: 17px;
-                                    color: white;
-                                    width: 100%;
-                                    text-align: center;
-                                    margin-bottom: 4%;">
-                                    YOUR QUERY DIDN'T MATCH WITCH ANY BIKE. PLEASE TRY AGAIN.
-                            </div>
-                    {% elseif amount > 14 %}
-                        <div style="
-                                    font-size: 17px;
-                                    color: white;
-                                    width: 100%;
-                                    text-align: center;
-                                    margin-bottom: 4%;">
-                             WE FOUND TOO MUCH BIKES ({{ amount }}). PLEASE SPECIFY QUERY.
+                <div class="6u 12u$(xsmall)">
+                    <div class="image fit captioned">
+                        <h3>YOUR QUERY DIDN'T MATCH WITCH ANY BIKE. PLEASE TRY AGAIN. </h3>
+                    </div>
+                </div>
+                        {% elseif amount > 14 %}
+                    <div class="6u 12u$(xsmall)">
+                        <div class="image fit captioned">
+                            <h3>WE FOUND TOO MUCH BIKES ({{ amount }}). PLEASE SPECIFY QUERY. </h3>
                         </div>
-                    {% endif %}
-                </section>
+                    </div>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+    </section>
         {% endblock %}
 {% endblock %}
