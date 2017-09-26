@@ -4,18 +4,17 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Bike;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\Query;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\Cookie;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
+use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 
 class SearchController extends Controller
@@ -23,7 +22,6 @@ class SearchController extends Controller
 
     /**
      * @Route("/search")
-     * @Route("/search/")
      */
     public function searchAction(Request $request)
     {
@@ -238,7 +236,6 @@ class SearchController extends Controller
 
         $post = $request->request->get('form');
 
-
         if (isset($post['Brand'][0]) ) {
             $brand = $post['Brand'];
             $resultArray['brand'] = $brand;
@@ -354,13 +351,13 @@ class SearchController extends Controller
             $resultArray['geometry3'] = $geometry3;
         }
 
-        if (isset($post['What_year'][0]) ) {
-            $year = $post['What_year'][0];
+        if (isset($post['Model_year'][0]) ) {
+            $year = $post['Model_year'][0];
             $resultArray['year'] = $year;
         }
 
-        if (isset($post['What_year'][1]) ) {
-            $year2 = $post['What_year'][1];
+        if (isset($post['Model_year'][1]) ) {
+            $year2 = $post['Model_year'][1];
             $resultArray['year2'] = $year2;
         }
 
@@ -368,23 +365,19 @@ class SearchController extends Controller
 
         $query = $repository->createQueryBuilder('b');
 
-        if ($brand != null) {
+        if (isset($brand)) {
             $brandArray = $this
                 ->getDoctrine()
                 ->getRepository('AppBundle:Brand')
                 ->findBy(array('brand' => $brand));
 
             foreach ($brandArray as $row) {
-                $brand = $row->getBrand();
                 $brandId = $row->getId();
+                $query->andwhere("b.brand = '$brandId'");
             }
-            $query->where('b.brand = :brand_id')
-                ->setParameter('brand_id', $brandId);
         }
 
-        if (isset($brand)) {
-            $query->andWhere("b.year = '$brand' ");
-        }
+
 
         if (isset($material) && isset($material2)) {
             $query->andWhere("b.material = '$material' OR b.material = '$material2' ");
@@ -450,21 +443,39 @@ class SearchController extends Controller
         if (isset($year) && isset($year2)) {
             $query->andWhere("b.year = '$year' OR b.year = '$year2' ");
         } elseif (isset($year)) {
-            $query->andWhere("b.size = '$year' ");
+            $query->andWhere("b.year = '$year' ");
         }
 
-
-        if ($resultArray['brand'] != null) {
+        if (isset($resultArray['brand'])) {
             $bike = $query->getQuery()->getResult();
+
+            $dql = $query->getQuery()->getDQL();
+            $rand = substr(md5(microtime()),rand(0,26),5);
+            $dql = $this->createSlug($dql, $rand);
+
             return $this->render('default/search/result.html.twig',
-                array('bike' => $bike, 'result' => $resultArray));
+                array('bike' => $bike, 'result' => $resultArray, 'rand' => $rand));
 
         } else {
             $bike = $query->getQuery()->getResult();
-            $response = new Response(); $response->headers->clearCookie('brand'); $response->send();
+
+            $dql = $query->getQuery()->getDQL();
+            $rand = substr(md5(microtime()),rand(0,26),5);
+            $dql = $this->createSlug($dql, $rand);
+
             return $this->render('default/search/result.html.twig',
-                array('bike' => $bike, 'result' => $resultArray));
+                array('bike' => $bike, 'result' => $resultArray, 'rand' => $rand));
         }
+    }
+
+    public function createSlug($dql, $rand) {
+        $query = new \AppBundle\Entity\Query();
+        $query->setQuery($dql);
+        $query->setSlug($rand);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($query);
+        $em->flush();
+        return;
     }
 }
 

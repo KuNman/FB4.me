@@ -3299,8 +3299,8 @@
 }
 
 .sprite-ns-bikes {
-	width: 320px;
-	height: 147px;
+	width: 157px;
+	height: 72px;
 	background-position: -5px -76px;
 	display: block;
 	margin: auto;
@@ -3309,7 +3309,15 @@
 .sprite-scott {
 	width: 320px;
 	height: 79px;
-	background-position: -5px -233px;
+	background-position: -5px -158px;
+	display: block;
+	margin: auto;
+}
+
+.sprite-specialized-logo {
+	width: 283px;
+	height: 100px;
+	background-position: -5px -247px;
 	display: block;
 	margin: auto;
 }

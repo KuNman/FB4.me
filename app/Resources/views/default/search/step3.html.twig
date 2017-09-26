@@ -8,24 +8,21 @@
     $(document).ready(function () {
         $("select").select2({
             maximumSelectionLength: 2,
-            width: '25%'
+            width: '40%'
         });
         $(".fork").select2({
             maximumSelectionLength: 5,
-            width: '25%'
+            width: '40%'
         });
         $(".gears").select2({
             maximumSelectionLength: 3,
-            width: '25%'
+            width: '40%'
         });
         $(".geometry").select2({
             maximumSelectionLength: 3,
-            width: '25%'
+            width: '40%'
         });
         $('submit').height(100);
-    });
-    $(document).ready(function(){
-        $('form[Please_choose_frame_material][]').infoBox();
     });
     </script>
 {% endblock %}
@@ -38,11 +35,10 @@
     <nav id="nav">
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="login">Login</a></li>
         </ul>
     </nav>
 </header>
-<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+{# <a class="navPanelToggle"><span class="fa fa-bars"></span></a> #}
 <!-- Banner -->
 <section id="banner">
     {#<h2>Search Start</h2>#}
