@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic</title>
+    <link rel="stylesheet" href="{{ asset('jquery-steps-master/dist/jquery-steps.css') }}">
+    <!-- Demo stylesheet -->
+    <link rel="stylesheet" href="{{ asset('jquery-steps-master/examples/css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+
+
+<div id="demo">
+    <div class="step-app">
+        <ul class="step-steps">
+            <li><a href="#step1">Step 1</a></li>
+            <li><a href="#step2">Step 2</a></li>
+            <li><a href="#step3">Step 3</a></li>
+        </ul>
+        <div class="step-content">
+            <div class="step-tab-panel" id="step1">
+                {{ form_start(form) }}
+                {{ form_row(form.geometry) }}
+                {{ form_row(form.material) }}
+            </div>
+            <div class="step-tab-panel" id="step2">
+                ...
+            </div>
+            <div class="step-tab-panel" id="step3">
+                <button data-direction="finish" class="step-result" style="display: none;">Finish</button>
+
+            </div>
+        </div>
+        <div class="step-footer">
+            <button data-direction="prev" class="step-btn">Previous</button>
+            <button data-direction="next" class="step-btn">Next</button>
+            <button data-direction="finish" class="step-btn-finish">Finish</button>
+        </div>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>
+<script src="{{ asset('jquery-steps-master/dist/jquery-steps.js') }}"></script>
+<script>
+    $('#demo').steps({
+//        onFinish: function () { window.location.href = 'search/result'; }
+    });
+    $('select').select2();
+    $(".step-btn-finish").click(function(){
+        $(".step-result").click();
+        return false;
+    });
+</script>
+</body>
+</html>
