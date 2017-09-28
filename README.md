@@ -8,5 +8,5 @@ http://findbike4.me/
 A Symfony project created on September 10, 2017, 10:29 am.
 
 To do :
-- texts refactoring
+- texts refactorisation
 - more advanced form with frame angles
