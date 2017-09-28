@@ -11,7 +11,6 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
@@ -142,7 +141,7 @@ class SearchController extends Controller
                     'class' => 'damper'
                 )
             ))
-            ->add('Please_choose_wheels_material', EntityType::class, array(
+            ->add('wheels', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Bike',
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('u')
@@ -156,7 +155,7 @@ class SearchController extends Controller
                     'class' => 'wheels'
                 )
             ))
-            ->add('Please_choose_wheels_size', EntityType::class, array(
+            ->add('size', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Bike',
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('u')
@@ -170,7 +169,7 @@ class SearchController extends Controller
                     'class' => 'size'
                 )
             ))
-            ->add('How_much_gears_you_would_have', EntityType::class, array(
+            ->add('gears', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Bike',
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('u')
@@ -184,7 +183,7 @@ class SearchController extends Controller
                     'class' => 'gears'
                 )
             ))
-            ->add('What_geometry_you_prefer', EntityType::class, array(
+            ->add('geometry', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Bike',
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('u')
@@ -198,7 +197,7 @@ class SearchController extends Controller
                     'class' => 'geometry'
                 )
             ))
-            ->add('Model_year', EntityType::class, array(
+            ->add('year', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Bike',
                 'query_builder' => function (EntityRepository $entityRepository) {
                     return $entityRepository->createQueryBuilder('u')
@@ -232,129 +231,131 @@ class SearchController extends Controller
         $resultArray = array();
 
         $post = $request->request->get('form');
+        $post2 = $request->request->all();
+
 
         if (isset($post['Brand'][0]) ) {
             $brand = $post['Brand'];
             $resultArray['brand'] = $brand;
         }
 
-        if (isset($post['Please_choose_frame_material'][0]) ) {
-            $material = $post['Please_choose_frame_material'][0];
+        if (isset($post['material'][0]) ) {
+             $material = $post['material'][0];
             $resultArray['material'] = $material;
         }
 
-        if (isset($post['Please_choose_frame_material'][1]) ) {
-            $material2 = $post['Please_choose_frame_material'][1];
+        if (isset($post['material'][1]) ) {
+             $material2 = $post['material'][1];
             $resultArray['material2'] = $material2;
         }
 
-        if (isset($post['Please_choose_your_favorite_fork'][0]) ) {
-            $fork = $post['Please_choose_your_favorite_fork'][0];
+        if (isset($post['fork'][0]) ) {
+             $fork = $post['fork'][0];
             $resultArray['fork'] = $fork;
         }
 
-        if (isset($post['Please_choose_your_favorite_fork'][1]) ) {
-            $fork2 = $post['Please_choose_your_favorite_fork'][1];
+        if (isset($post['fork'][1]) ) {
+            $fork2 = $post['fork'][1];
             $resultArray['fork2'] = $fork2;
         }
 
-        if (isset($post['Please_choose_your_favorite_fork'][2]) ) {
-            $fork3 = $post['Please_choose_your_favorite_fork'][2];
+        if (isset($post['fork'][2]) ) {
+             $fork3 = $post['fork'][2];
             $resultArray['fork3'] = $fork3;
         }
 
-        if (isset($post['Please_choose_your_favorite_fork'][3]) ) {
-            $fork4 = $post['Please_choose_your_favorite_fork'][3];
+        if (isset($post['fork'][3]) ) {
+            $fork4 = $post['fork'][3];
             $resultArray['fork4'] = $fork4;
         }
 
-        if (isset($post['Please_choose_your_favorite_fork'][4]) ) {
-            $fork5 = $post['Please_choose_your_favorite_fork'][4];
+        if (isset($post['fork'][4]) ) {
+            $fork5 = $post['fork'][4];
             $resultArray['fork5'] = $fork5;
         }
 
-        if (isset($post['Please_choose_your_favorite_damper'][0]) ) {
-            $damper = $post['Please_choose_your_favorite_damper'][0];
+        if (isset($post['damper'][0]) ) {
+            $damper = $post['damper'][0];
             $resultArray['damper'] = $damper;
         }
 
-        if (isset($post['Please_choose_your_favorite_damper'][1]) ) {
-            $damper2 = $post['Please_choose_your_favorite_damper'][1];
+        if (isset($post['damper'][1]) ) {
+            $damper2 = $post['damper'][1];
             $resultArray['damper2'] = $damper2;
         }
 
-        if (isset($post['Please_choose_your_favorite_damper'][2]) ) {
-            $damper3 = $post['Please_choose_your_favorite_damper'][2];
+        if (isset($post['damper'][2]) ) {
+            $damper3 = $post['damper'][2];
             $resultArray['damper3'] = $damper3;
         }
 
-        if (isset($post['Please_choose_your_favorite_damper'][3]) ) {
-            $damper4 = $post['Please_choose_your_favorite_damper'][3];
+        if (isset($post['damper'][3]) ) {
+            $damper4 = $post['damper'][3];
             $resultArray['damper4'] = $damper4;
         }
 
-        if (isset($post['Please_choose_your_favorite_damper'][4]) ) {
-            $damper5 = $post['Please_choose_your_favorite_damper'][4];
+        if (isset($post['damper'][4]) ) {
+            $damper5 = $post['damper'][4];
             $resultArray['damper5'] = $damper5;
         }
 
-        if (isset($post['Please_choose_wheels_material'][0]) ) {
-            $wheels = $post['Please_choose_wheels_material'][0];
+        if (isset($post['wheels'][0]) ) {
+            $wheels = $post['wheels'][0];
             $resultArray['wheels'] = $wheels;
         }
 
-        if (isset($post['Please_choose_wheels_material'][1]) ) {
-            $wheels2 = $post['Please_choose_wheels_material'][1];
+        if (isset($post['wheels'][1]) ) {
+            $wheels2 = $post['wheels'][1];
             $resultArray['wheels2'] = $wheels2;
         }
 
-        if (isset($post['Please_choose_wheels_size'][0]) ) {
-            $size = $post['Please_choose_wheels_size'][0];
+        if (isset($post['size'][0]) ) {
+            $size = $post['size'][0];
             $resultArray['size'] = $size;
         }
 
-        if (isset($post['Please_choose_wheels_size'][1]) ) {
-            $size2 = $post['Please_choose_wheels_size'][1];
+        if (isset($post['size'][1]) ) {
+            $size2 = $post['size'][1];
             $resultArray['size2'] = $size2;
         }
 
-        if (isset($post['How_much_gears_you_would_have'][0]) ) {
-            $gears = $post['How_much_gears_you_would_have'][0];
+        if (isset($post['gears'][0]) ) {
+             $gears = $post['gears'][0];
             $resultArray['gears'] = $gears;
         }
 
-        if (isset($post['How_much_gears_you_would_have'][1]) ) {
-            $gears2 = $post['How_much_gears_you_would_have'][1];
+        if (isset($post['gears'][1]) ) {
+            $gears2 = $post['gears'][1];
             $resultArray['gears2'] = $gears2;
         }
 
-        if (isset($post['How_much_gears_you_would_have'][2]) ) {
-            $gears3 = $post['How_much_gears_you_would_have'][2];
+        if (isset($post['gears'][2]) ) {
+            $gears3 = $post['gears'][2];
             $resultArray['gears3'] = $gears3;
         }
 
-        if (isset($post['What_geometry_you_prefer'][0]) ) {
-            $geometry = $post['What_geometry_you_prefer'][0];
+        if (isset($post['geometry'][0]) ) {
+            $geometry = $post['geometry'][0];
             $resultArray['geometry'] = $geometry;
         }
 
-        if (isset($post['What_geometry_you_prefer'][1]) ) {
-            $geometry2 = $post['What_geometry_you_prefer'][1];
+        if (isset($post['geometry'][1]) ) {
+            $geometry2 = $post['geometry'][1];
             $resultArray['geometry2'] = $geometry2;
         }
 
-        if (isset($post['What_geometry_you_prefer'][2]) ) {
-            $geometry3 = $post['What_geometry_you_prefer'][2];
+        if (isset($post['geometry'][2]) ) {
+            $geometry3 = $post['geometry'][2];
             $resultArray['geometry3'] = $geometry3;
         }
 
-        if (isset($post['Model_year'][0]) ) {
-            $year = $post['Model_year'][0];
+        if (isset($post['year'][0]) ) {
+            $year = $post['year'][0];
             $resultArray['year'] = $year;
         }
 
-        if (isset($post['Model_year'][1]) ) {
-            $year2 = $post['Model_year'][1];
+        if (isset($post['year'][1]) ) {
+            $year2 = $post['year'][1];
             $resultArray['year2'] = $year2;
         }
 
@@ -425,8 +426,8 @@ class SearchController extends Controller
             $query->andWhere("b.gears = '$gears' OR b.gears = '$gears2' OR b.gears = '$gears3' ");
         } elseif (isset($gears) && isset($gears2)) {
             $query->andWhere("b.gears = '$gears' OR b.gears = '$gears2' ");
-        } elseif (isset($gears3)) {
-            $query->andWhere("b.gears = '$gears3' ");
+        } elseif (isset($gears)) {
+            $query->andWhere("b.gears = '$gears' ");
         }
 
         if (isset($geometry) && isset($geometry2) && isset($geometry3)) {
