@@ -1,9 +1,10 @@
 .step-app > .step-steps {
-  margin: 0;
+  margin-left: 10%;
+  margin-right: 10%;
   padding: 0;
   display: flex;
-  border-radius: 3px 3px 0 0;
   overflow: hidden;
+  width: 80%;
 }
 .step-app > .step-steps > li {
   list-style: none;
@@ -18,7 +19,6 @@
   color: #333;
   background-color: #e5e5e5;
   text-decoration: none;
-  border-right: 1px solid #fff;
 }
 .step-app > .step-steps > li > a > .number {
   background: #fff;
@@ -45,8 +45,6 @@
   color: #fff;
 }
 .step-app > .step-content {
-  border: 1px solid #e5e5e5;
-  padding: 10px;
   border-top: 0;
 }
 .step-app > .step-content > .step-tab-panel {
@@ -58,22 +56,23 @@
 .step-app > .step-footer {
   margin-top: 15px;
   margin-bottom: 15px;
+
 }
 .step-app > .step-footer > .step-btn {
-   padding: 4px 16px;
-   color: #333;
+    color: #333;
    text-decoration: none;
-   background: #e5e5e5;
+    display: inline-block;
+    background: #A9A9A9;
    border-radius: 3px;
    border: none;
    outline: none;
    cursor: pointer;
  }
 .step-btn-finish {
-    padding: 4px 16px;
     color: #333;
     text-decoration: none;
-    background: #e5e5e5;
+    display: inline-block;
+    background: #A9A9A9;
     border-radius: 3px;
     border: none;
     outline: none;

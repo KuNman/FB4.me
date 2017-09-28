@@ -6,8 +6,12 @@
         <!-- Scripts -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {% endblock %}
+        {% block css %}{% endblock %}
         <link rel="stylesheet" href="{{ asset('css/templated-spatial/assets/css/main.css') }}" type="text/css"/>
-
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/css/select2.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jquery-steps.css') }}">
+        <script src="{{ asset('css/templated-spatial/assets/js/jquery-steps.js') }}"></script>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title> Findbike4.me</title>
