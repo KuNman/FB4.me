@@ -16,18 +16,21 @@
 <div id="demo">
     <div class="step-app">
         <ul class="step-steps">
-            <li><a href="#step1">Step 1</a></li>
-            <li><a href="#step2">Step 2</a></li>
-            <li><a href="#step3">Step 3</a></li>
+            <li><a href="#step1">General</a></li>
+            <li><a href="#step2">Suspension</a></li>
+            <li><a href="#step3">Dearailleur</a></li>
+            <li><a href="#step3">Wheels</a></li>
         </ul>
         <div class="step-content">
-            <div class="step-tab-panel" id="General">
+            <div class="step-tab-panel" id="step1">
                 {{ form_start(form) }}
-                {{ form_row(form.geometry) }}
-                {{ form_row(form.material) }}
+                <center>{{ form_row(form.geometry, { 'label': 'What geometery you need? ' }) }} <p></p></center>
+                <center>{{ form_row(form.material, { 'label': 'Which frame material you prefer? ' }) }} </center>
             </div>
             <div class="step-tab-panel" id="step2">
-                ...
+                <center>{{ form_row(form.fork) }} <p></p></center>
+                <center>{{ form_row(form.damper) }}</center>
+
             </div>
             <div class="step-tab-panel" id="step3">
                 <button data-direction="finish" class="step-result" style="display: none;">Finish</button>
@@ -47,9 +50,11 @@
 <script src="{{ asset('jquery-steps-master/dist/jquery-steps.js') }}"></script>
 <script>
     $('#demo').steps({
-//        onFinish: function () { window.location.href = 'search/result'; }
     });
-    $('select').select2();
+    $('select').select2({
+        width: '27%',
+        maximumSelectionLength: 3
+    });
     $(".step-btn-finish").click(function(){
         $(".step-result").click();
         return false;
