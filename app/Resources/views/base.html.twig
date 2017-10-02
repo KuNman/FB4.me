@@ -12,22 +12,23 @@
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/jquery-steps.css') }}">
         <script src="{{ asset('css/templated-spatial/assets/js/jquery-steps.js') }}"></script>
+        <link rel="icon" type="image/png" href="{{ asset('/favicon.png') }}">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title> Findbike4.me</title>
     {% endblock %}
 </head>
 <body>
-    <div id="content">{% block content %}{% endblock %}</div>
+<div id="content">{% block content %}{% endblock %}</div>
 
-    {% block footer %}
-<!-- Footer -->
-<footer id="footer">
-    <div class="container">
-        Wrote by KuNman@2017
-        <a href="contact">CONTACT</a>
-    </div>
-</footer>
-    {% endblock %}
+{% block footer %}
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            Wrote by KuNman@2017
+            <a href="contact">Contact</a>
+        </div>
+    </footer>
+{% endblock %}
 </body>
 </html>
